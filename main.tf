@@ -1,17 +1,19 @@
 # Definición del provider que ocuparemos
 provider "azurerm" {
   features {}
+  subscription_id = "6410cf32-59bb-46b6-b0d5-f25b6725d9d5"
+
 }
 
 # Se crea el grupo de recursos, al cual se asociarán los demás recursos
 resource "azurerm_resource_group" "rg" {
-  name     = var.name_function
-  location = var.location
+  name     = "azfuncsergio06302005"
+  location = "eastus"
 }
 
 # Se crea un Storage Account, para asociarlo al function app (recomendación de la documentación).
 resource "azurerm_storage_account" "sa" {
-  name                     = var.name_function
+  name                     = "azfuncsergio06302005"
   resource_group_name      = azurerm_resource_group.rg.name
   location                 = azurerm_resource_group.rg.location
   account_tier             = "Standard"
@@ -21,7 +23,7 @@ resource "azurerm_storage_account" "sa" {
 # Se crea el recurso Service Plan para especificar el nivel de servicio 
 # (por ejemplo, "Consumo", "Functions Premium" o "Plan de App Service"), en este caso "Y1" hace referencia a plan consumo 
 resource "azurerm_service_plan" "sp" {
-  name                = var.name_function
+  name                = "azfuncsergio06302005"
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
   os_type             = "Windows"
@@ -30,7 +32,7 @@ resource "azurerm_service_plan" "sp" {
 
 # Se crea la aplicación de Funciones 
 resource "azurerm_windows_function_app" "wfa" {
-  name                = var.name_function
+  name                = "azfuncsergio06302005"
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
 
@@ -47,7 +49,7 @@ resource "azurerm_windows_function_app" "wfa" {
 
 # Se crea una función dentro de la aplicación de funciones
 resource "azurerm_function_app_function" "faf" {
-  name            = var.name_function
+  name            = "azfuncsergio06302005"
   function_app_id = azurerm_windows_function_app.wfa.id
   language        = "Javascript"
   # Se carga el código de ejemplo dentro de la función
