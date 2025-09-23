@@ -455,13 +455,7 @@ git push origin main
 * If a `terraform apply` seems stuck but the resource shows `Running` in Azure, safe flow: `CTRL+C` → `terraform refresh`.
 * Keep your PAT secret — do not hardcode it into repos.
 
----
 
-If you want, I can:
-
-* paste this README into your repo (create the file), or
-* produce a short GIF showing the exact commands you ran, or
-* create a tiny Hello-World HTTP Function and the `func azure functionapp publish` steps so the site returns a `Hello Sergio` message.
 <img width="1872" height="1024" alt="image" src="https://github.com/user-attachments/assets/522ad5ca-59b8-4ed2-9332-328d9974d124" />
 
 
